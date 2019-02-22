@@ -14,7 +14,7 @@
     var stickyTop = 'thead tr, tbody tr:nth-child(3),tbody tr:nth-child(10)';
     var stickyBottom = 'tfoot tr, tbody tr:nth-child(30)';
     var stickyLeft = 'tbody tr td:first-child, tr th:first-child';
-    var stickRigth = 'tbody tr td:last-child, tr th:last-child';
+    var stickRight = 'tbody tr td:last-child, tr th:last-child';
     var tableSticky;
 
     var stickyTable = function() {
@@ -118,12 +118,12 @@
         stickyTop = tableSticky.data('sticky-top');
         stickyBottom = tableSticky.data('sticky-bottom');
         stickyLeft = tableSticky.data('sticky-left');
-        stickRigth = tableSticky.data('sticky-rigth');
+        stickRight = tableSticky.data('sticky-rigth');
 
         $(stickyTop).addClass('sticky-header');
         $(stickyBottom).addClass('sticky-footer');
         $(stickyLeft).addClass('sticky-cell');
-        $(stickRigth).addClass('sticky-cell-opposite');
+        $(stickRight).addClass('sticky-cell-opposite');
 
         return true;
     };
