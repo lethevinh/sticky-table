@@ -14,6 +14,7 @@ Create table like hmtl example:
 ```html
 <script src="jquery.js"></script>
 <script src="sticky.js"></script>
+<link rel="stylesheet" type="text/css" href="../stickytable.css">
 
 <table class="table-sticky" 
 data-sticky-top="thead tr" 
