@@ -17,11 +17,18 @@ Check the `example-*.html` files for some examples.
 - Include jQuery & Sticky Table.
 - Call Sticky Table.
 
+Create table like hmtl example: 
+ - Class name `.sticky-table`  
+ - Attribute : `data-sticky-top`,`data-sticky-left`,`data-sticky-right`,`data-sticky-bottom`
 ```html
 <script src="jquery.js"></script>
 <script src="sticky.js"></script>
 
-<table class="table-sticky" data-sticky-top="thead tr" data-sticky-left="tbody tr td:first-child, tr th:first-child"  data-sticky-bottom="tfoot tr" data-sticky-rigth="tbody tr td:last-child, tr th:last-child">
+<table class="table-sticky" 
+data-sticky-top="thead tr" 
+data-sticky-left="tbody tr td:first-child, tr th:first-child"  
+data-sticky-bottom="tfoot tr" 
+data-sticky-rigth="tbody tr td:last-child, tr th:last-child">
     <thead>
         <tr>
             <th>Sticky</th>
@@ -45,18 +52,20 @@ Check the `example-*.html` files for some examples.
     </tfoot>
 </table>
 ```
-
-## Options
-
-- `topSpacing`: (default: `0`) Pixels between the page top and the element's top.
-- `bottomSpacing`: (default: `0`) Pixels between the page bottom and the element's bottom.
-- `className`: (default: `'is-Sticky Table'`) CSS class added to the element's wrapper when "sticked".
-- `wrapperClassName`: (default: `'Sticky Table-wrapper'`) CSS class added to the wrapper.
-- `center`: (default: `false`) Boolean determining whether the Sticky Table element should be horizontally centered in the page.
-- `getWidthFrom`: (default: `''`) Selector of element referenced to set fixed width of "Sticky Table" element.
-- `widthFromWrapper`: (default: `true`) Boolean determining whether width of the "Sticky Table" element should be updated to match the wrapper's width. Wrapper is a placeholder for "Sticky Table" element while it is fixed (out of static elements flow), and its width depends on the context and CSS rules. Works only as long `getWidthForm` isn't set.
-- `responsiveWidth`: (default: `false`) Boolean determining whether widths will be recalculated on window resize (using getWidthfrom).
-- `zIndex`: (default: `inherit`) controls z-index of the sticked element.
+Or Call function `sticky(option)`
+```html
+ $('.selector-table').sticky({
+    top:"",
+    bottom:"",
+    left:"",
+    right:""
+ });
+```
+ ####Options 
+  - `top`: selectors row need sticky header.(eg:`table tr:first-child`)<br>
+  - `bottom`: selectors row need sticky footer(eg:`table tr:last-child`)<br>
+  - `left`: selectors row need sticky Left.(eg:`table tr td:first-child`)<br>
+  - `right`: selectors row need sticky Right(eg:`table tr td:last-child`)<br>
 
 ## Methods
 
