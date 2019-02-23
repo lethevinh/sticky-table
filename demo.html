@@ -7,13 +7,42 @@
     <link rel="stylesheet" type="text/css" href="stickytable.css">
     <link rel="stylesheet" type="text/css" href="custom.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+
     <script type="text/javascript" src="sticky.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('table').on('sticky-table-susses', function() {
+                console.log("add-sticky-table-susses");
+            });
+            $('table').on('sticky-table-start', function() {
+                console.log("add-sticky-table-start");
+            });
+
+            $('table').on('sticky-table-removed', function() {
+                console.log("sticky-table-removed");
+                $('table').trigger("sticky-table-susses");
+            });
+
+            $('table').sticky();
+            setTimeout(function () {
+                // $('table').unstick();
+            },1000);
+            setTimeout(function () {
+                // $('table').sticky({'top':"thead tr"});
+            },2000);
+
+        });
+    </script>
 </head>
 
 <body>
     <input type="submit" name="test">
     <div class="wrapper">
-        <table class="table table-striped table-sticky" data-sticky-top="thead tr" data-sticky-left="tbody tr td:first-child, tr th:first-child"  data-sticky-bottom="tfoot tr" data-sticky-rigth="tbody tr td:last-child, tr th:last-child">
+        <table class="table table-striped table-stickys"
+               data-sticky-top="thead tr"
+               data-sticky-left="tbody tr td:first-child, tr th:first-child, tbody tr td:nth-child(6), tr th:nth-child(6)"
+               data-sticky-bottom="tfoot tr"
+               data-sticky-right="tbody tr td:last-child, tr th:last-child">
             <caption>table title and/or explanatory text</caption>
             <thead>
                 <tr>
@@ -1898,6 +1927,7 @@
     <br>
     <br>
     <br>
+
 </body>
 
 </html>

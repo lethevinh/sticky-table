@@ -1,4 +1,4 @@
-(function(factory) {
+(function (factory) {
     if (typeof define === 'function' && define.amd) {
         // AMD. Register as an anonymous module.
         define(['jquery'], factory);
@@ -9,24 +9,35 @@
         // Browser globals
         factory(jQuery);
     }
-}(function($) {
+}(function ($) {
 
-    var stickyTop = 'thead tr, tbody tr:nth-child(3),tbody tr:nth-child(10)';
-    var stickyBottom = 'tfoot tr, tbody tr:nth-child(30)';
-    var stickyLeft = 'tbody tr td:first-child, tr th:first-child';
-    var stickRight = 'tbody tr td:last-child, tr th:last-child';
     var tableSticky;
+    var wrapperSticky;
 
-    var stickyTable = function() {
+    const CLASS = {
+        "wrapper": "wrapper-sticky",
+        "wrapperLTR": "sticky-ltr-cells",
+        "wrapperRTL": "sticky-rtl-cells",
+        "tableSticky":"table-sticky"
+    };
 
-        var positionStickySupport = function() {
+    var defaultOptions = {
+        top: "",
+        left: "",
+        right: "",
+        bottom: ""
+    };
+
+    var handleNotPositionSticky = function () {
+
+        var positionStickySupport = function () {
             var el = document.createElement('a'),
                 mStyle = el.style;
             mStyle.cssText = "position:sticky;position:-webkit-sticky;position:-ms-sticky;";
             return mStyle.position.indexOf('sticky') !== -1;
         }();
 
-        var scrollTypeRTL = function() {
+        var scrollTypeRTL = function () {
             var definer = $('<div dir="rtl" style="font-size: 14px; width: 4px; height: 1px; position: absolute; top: -1000px; overflow: scroll">ABCD</div>').appendTo('body')[0],
                 scrollTypeRTL = 'reverse';
 
@@ -43,8 +54,9 @@
         }();
 
         if (!positionStickySupport) {
+
             if (navigator.userAgent.match(/Trident\/7\./)) {
-                $('.sticky-table').on("mousewheel", function(event) {
+                $(CLASS.wrapper).on("mousewheel", function (event) {
                     event.preventDefault();
                     var wd = event.originalEvent.wheelDelta;
                     var csp = $(this).scrollTop();
@@ -52,104 +64,146 @@
                 });
             }
 
-            $(".sticky-table").scroll(function() {
-                $(this).find("table tr.sticky-header th").css('top', $(this).scrollTop());
-                $(this).find("table tr.sticky-header td").css('top', $(this).scrollTop());
+            $(CLASS.wrapper).scroll(function () {
+                $(this).find("table tr.sticky-top th").css('top', $(this).scrollTop());
+                $(this).find("table tr.sticky-top td").css('top', $(this).scrollTop());
                 var maxScroll = $(this).find("table").prop("clientHeight") - $(this).prop("clientHeight");
-                $(this).find("table tr.sticky-footer th").css('bottom', maxScroll - $(this).scrollTop());
-                $(this).find("table tr.sticky-footer td").css('bottom', maxScroll - $(this).scrollTop());
+                $(this).find("table tr.sticky-bottom th").css('bottom', maxScroll - $(this).scrollTop());
+                $(this).find("table tr.sticky-bottom td").css('bottom', maxScroll - $(this).scrollTop());
             }).scroll();
 
-            $(".sticky-ltr-cells").scroll(function() {
-                $(this).find("table th.sticky-cell").css('left', $(this).scrollLeft());
-                $(this).find("table td.sticky-cell").css('left', $(this).scrollLeft());
+            $(CLASS.wrapperLTR).scroll(function () {
+                $(this).find("table th.sticky-left").css('left', $(this).scrollLeft());
+                $(this).find("table td.sticky-left").css('left', $(this).scrollLeft());
                 var maxScroll = $(this).find("table").prop("clientWidth") - $(this).prop("clientWidth");
-                $(this).find("table th.sticky-cell-opposite").css('right', maxScroll - $(this).scrollLeft());
-                $(this).find("table td.sticky-cell-opposite").css('right', maxScroll - $(this).scrollLeft());
+                $(this).find("table th.sticky-right").css('right', maxScroll - $(this).scrollLeft());
+                $(this).find("table td.sticky-right").css('right', maxScroll - $(this).scrollLeft());
             }).scroll();
         }
-        if ($(".sticky-rtl-cells").length && !(positionStickySupport && scrollTypeRTL == 'negative')) {
-            if (positionStickySupport) {
-                $(".sticky-rtl-cells table th.sticky-cell").css('position', "relative");
-                $(".sticky-rtl-cells table td.sticky-cell").css('position', "relative");
-                $(".sticky-rtl-cells table th.sticky-cell-opposite").css('position', "relative");
-                $(".sticky-rtl-cells table td.sticky-cell-opposite").css('position', "relative");
 
-                $(".sticky-table").scroll(function() {
-                    $(this).find("table tr.sticky-header .sticky-cell").css('top', $(this).scrollTop());
-                    $(this).find("table tr.sticky-header .sticky-cell-opposite").css('top', $(this).scrollTop());
+        if ($(CLASS.wrapperRTL).length && !(positionStickySupport && scrollTypeRTL === 'negative')) {
+            if (positionStickySupport) {
+                $(".sticky-rtl-cells table th.sticky-left").css('position', "relative");
+                $(".sticky-rtl-cells table td.sticky-left").css('position', "relative");
+                $(".sticky-rtl-cells table th.sticky-right").css('position', "relative");
+                $(".sticky-rtl-cells table td.sticky-right").css('position', "relative");
+
+                $(CLASS.wrapper).scroll(function () {
+                    $(this).find("table tr.sticky-top .sticky-left").css('top', $(this).scrollTop());
+                    $(this).find("table tr.sticky-top .sticky-right").css('top', $(this).scrollTop());
                     var maxScroll = $(this).find("table").prop("clientHeight") - $(this).prop("clientHeight");
-                    $(this).find("table tr.sticky-footer .sticky-cell").css('bottom', maxScroll - $(this).scrollTop());
-                    $(this).find("table tr.sticky-footer .sticky-cell-opposite").css('bottom', maxScroll - $(this).scrollTop());
+                    $(this).find("table tr.sticky-bottom .sticky-left").css('bottom', maxScroll - $(this).scrollTop());
+                    $(this).find("table tr.sticky-bottom .sticky-right").css('bottom', maxScroll - $(this).scrollTop());
                 }).scroll();
             }
-            $(".sticky-rtl-cells").scroll(function() {
+            $(CLASS.wrapperRTL).scroll(function () {
                 var maxScroll = $(this).find("table").prop("clientWidth") - $(this).prop("clientWidth");
                 switch (scrollTypeRTL) {
                     case "default": // webKit Browsers
-                        $(this).find("table th.sticky-cell").css('right', maxScroll - $(this).scrollLeft());
-                        $(this).find("table td.sticky-cell").css('right', maxScroll - $(this).scrollLeft());
-                        $(this).find("table th.sticky-cell-opposite").css('left', $(this).scrollLeft());
-                        $(this).find("table td.sticky-cell-opposite").css('left', $(this).scrollLeft());
+                        $(this).find("table th.sticky-left").css('right', maxScroll - $(this).scrollLeft());
+                        $(this).find("table td.sticky-left").css('right', maxScroll - $(this).scrollLeft());
+                        $(this).find("table th.sticky-right").css('left', $(this).scrollLeft());
+                        $(this).find("table td.sticky-right").css('left', $(this).scrollLeft());
                         break;
                     case "negative": // Firefox, Opera
-                        $(this).find("table th.sticky-cell").css('right', $(this).scrollLeft() * -1);
-                        $(this).find("table td.sticky-cell").css('right', $(this).scrollLeft() * -1);
-                        $(this).find("table th.sticky-cell-opposite").css('left', maxScroll + $(this).scrollLeft());
-                        $(this).find("table td.sticky-cell-opposite").css('left', maxScroll + $(this).scrollLeft());
+                        $(this).find("table th.sticky-left").css('right', $(this).scrollLeft() * -1);
+                        $(this).find("table td.sticky-left").css('right', $(this).scrollLeft() * -1);
+                        $(this).find("table th.sticky-right").css('left', maxScroll + $(this).scrollLeft());
+                        $(this).find("table td.sticky-right").css('left', maxScroll + $(this).scrollLeft());
                         break;
                     case "reverse": // IE, Edge
-                        $(this).find("table th.sticky-cell").css('right', $(this).scrollLeft());
-                        $(this).find("table td.sticky-cell").css('right', $(this).scrollLeft());
-                        $(this).find("table th.sticky-cell-opposite").css('left', maxScroll - $(this).scrollLeft());
-                        $(this).find("table td.sticky-cell-opposite").css('left', maxScroll - $(this).scrollLeft());
+                        $(this).find("table th.sticky-left").css('right', $(this).scrollLeft());
+                        $(this).find("table td.sticky-left").css('right', $(this).scrollLeft());
+                        $(this).find("table th.sticky-right").css('left', maxScroll - $(this).scrollLeft());
+                        $(this).find("table td.sticky-right").css('left', maxScroll - $(this).scrollLeft());
                 }
             }).scroll();
         }
     };
 
-    var createStructureTable = function() {
+    var addStructuringSticky = function (tableSticky, params = {}) {
 
-        if (tableSticky.parent().hasClass('sticky-table') || tableSticky.length == 0) {
+        if (tableSticky.parent().hasClass(CLASS.wrapper) || tableSticky.length === 0) {
             return false;
         }
 
-        tableSticky.wrap('<div class="sticky-table sticky-ltr-cells"></div>');
-        stickyTop = tableSticky.data('sticky-top');
-        stickyBottom = tableSticky.data('sticky-bottom');
-        stickyLeft = tableSticky.data('sticky-left');
-        stickRight = tableSticky.data('sticky-rigth');
+        tableSticky.wrap('<div class="' + CLASS.wrapper + ' sticky-ltr-cells"></div>');
 
-        $(stickyTop).addClass('sticky-header');
-        $(stickyBottom).addClass('sticky-footer');
-        $(stickyLeft).addClass('sticky-cell');
-        $(stickRight).addClass('sticky-cell-opposite');
+        if ($.isEmptyObject(params)) {
+            for (let position in defaultOptions) {
+                let valueSelector = tableSticky.data('sticky-' + position);
+                $(valueSelector).addClass('sticky-' + position);
+            }
+        }
+
+        let options = $.extend({}, defaultOptions, params);
+        for (let position in defaultOptions) {
+            let valueSelector = options[position];
+            $(valueSelector).addClass('sticky-' + position);
+        }
 
         return true;
     };
 
-    var initStickyTable = function() {
-        if (createStructureTable())
-            stickyTable();
+    var removeStructuringSticky = function (event, table) {
+        tableSticky = $(table);
+
+        if (!tableSticky.parent().hasClass(CLASS.wrapper)) {
+            return false;
+        }
+
+        for (position in defaultOptions) {
+            $('.sticky-' + position).removeClass('sticky-' + position);
+        }
+
+        tableSticky.off("sticky-table-susses");
+        tableSticky.off("sticky-table-start");
+        tableSticky.trigger("sticky-table-removed");
+        tableSticky.off("sticky-table-removed");
     };
 
-    jQuery(document).on('sticky-table', stickyTable);
-    jQuery(document).on('init-sticky-table', initStickyTable);
+    var initStickyTable = function (event, args = {}) {
+        let tableSticky = args.tableSticky;
 
-    $(function() {
-        tableSticky = $('.table');
-        $(document).trigger("init-sticky-table");
+        tableSticky.trigger("sticky-table-start");
+        if (addStructuringSticky(tableSticky, args.options)) {
+            wrapperSticky = tableSticky.parent();
+            handleNotPositionSticky();
+            tableSticky.parent().scroll(function () {
+                $(document).trigger("_sticky-table");
+            });
+        }
+        tableSticky.trigger("sticky-table-susses");
+    };
 
-        tableSticky.parent().scroll(function() {
-            $(document).trigger("sticky-table");
-        });
+    $(document).on('_sticky-table', handleNotPositionSticky);
+    $(document).on('_add-sticky-table', initStickyTable);
+    $(document).on('_remove-sticky-table', removeStructuringSticky);
+
+    $(function () {
+        let tableSticky = $('.' + CLASS.tableSticky);
+
+        if (tableSticky.length > 0){
+            tableSticky.trigger("_add-sticky-table", {tableSticky: tableSticky});
+        }
+
     });
 
     var timeoutId;
-    $(window).resize(function() {
+    $(window).resize(function () {
         if (timeoutId) clearTimeout(timeoutId);
-        timeoutId = setTimeout(function() {
-            $('.wrapper').trigger("sticky-table");
+        timeoutId = setTimeout(function () {
+            $(CLASS.wrapper).trigger("_sticky-table");
         }, 500);
     });
+
+    $.fn.sticky = function (options = {}) {
+        let tableSticky = $(this);
+        tableSticky.trigger("_add-sticky-table", {tableSticky: tableSticky, options: options});
+    };
+
+    $.fn.unstick = function () {
+        $(this).trigger("_remove-sticky-table", this);
+    };
+
 }));

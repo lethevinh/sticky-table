@@ -60,19 +60,12 @@ Check the `example-*.html` files for some examples.
 
 ## Methods
 
-- `init(options)`: Initializer. `options` is optional.
-- `update('update')`: Recalculates the element's position.
+- `sticky(options)`: Initializer. `options` is optional.
+- `sticky()`: Initializer. `options` is optional.
+- `unstick()`: Recalculates the element's position.
 
 ## Events
 
-- `init-sticky-table`: When the element becomes Sticky Table.
-- `sticky-table`: When the element becomes Sticky Table.
 - `sticky-table-start`: When the element becomes Sticky Table.
-- `sticky-table-end`: When the element returns to its original location
-- `sticky-table-update`: When the element is sticked but position must be updated for constraints reasons
-- `sticky-table-top`: When the element reached the bottom space limit
-- `sticky-table-bottom`: When the element reached the bottom space limit
-- `sticky-table-left`: When the element reached the bottom space limit
-- `sticky-table-right`: When the element reached the bottom space limit
-- `sticky-bottom-reached`: When the element reached the bottom space limit
-- `sticky-bottom-unreached`: When the element unreached the bottom space limit
+- `sticky-table-sucsses`: When the element becomes Sticky Table.
+- `sticky-table-removed`: When the element becomes Sticky Table.

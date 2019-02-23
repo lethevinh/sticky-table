@@ -1,4 +1,4 @@
-.sticky-table {
+.wrapper-sticky {
     max-width: 100%;
     max-height: 80vh;
     overflow: auto;
@@ -8,14 +8,14 @@
     transition: width 2s;
 }
 
-.sticky-table, .sticky-table * {
+.wrapper-sticky, .wrapper-sticky * {
     -webkit-transition: all 0s;
     -moz-transition: all 0s;
     -o-transition: all 0s;
     transition: all 0s;
 }
 
-.sticky-table table {
+.wrapper-sticky table {
     margin-bottom: 0;
     width: 100%;
     max-width: 100%;
@@ -24,8 +24,8 @@
     border-collapse: collapse;
 }
 
-.sticky-table table tr.sticky-header th, .sticky-table table tr.sticky-header td,
-.sticky-table table tr.sticky-footer th, .sticky-table table tr.sticky-footer td {
+.wrapper-sticky table tr.sticky-top th, .wrapper-sticky table tr.sticky-top td,
+.wrapper-sticky table tr.sticky-bottom th, .wrapper-sticky table tr.sticky-bottom td {
     background-color: #fff;
     border-top: 0;
     position: relative;
@@ -35,15 +35,15 @@
     outline: 1px solid #ddd;
     z-index: 5;
 }
-.sticky-table table tr.sticky-header th, .sticky-table table tr.sticky-header td {
+.wrapper-sticky table tr.sticky-top th, .wrapper-sticky table tr.sticky-top td {
     top: 0;
 }
-.sticky-table table tr.sticky-footer th, .sticky-table table tr.sticky-footer td {
+.wrapper-sticky table tr.sticky-bottom th, .wrapper-sticky table tr.sticky-bottom td {
     bottom: 0;
 }
 
-.sticky-table table td.sticky-cell, .sticky-table table th.sticky-cell,
-.sticky-table table td.sticky-cell-opposite, .sticky-table table th.sticky-cell-opposite {
+.wrapper-sticky table td.sticky-left, .wrapper-sticky table th.sticky-left,
+.wrapper-sticky table td.sticky-right, .wrapper-sticky table th.sticky-right {
     background-color: #fff;
     outline: 1px solid #ddd;
     position: relative;
@@ -52,18 +52,18 @@
     position: sticky;
     z-index: 10;
 }
-.sticky-table.sticky-ltr-cells table td.sticky-cell, .sticky-table.sticky-ltr-cells table th.sticky-cell,
-.sticky-table.sticky-rtl-cells table td.sticky-cell-opposite, .sticky-table.sticky-rtl-cells table th.sticky-cell-opposite {
+.wrapper-sticky.sticky-ltr-cells table td.sticky-left, .wrapper-sticky.sticky-ltr-cells table th.sticky-left,
+.wrapper-sticky.sticky-rtl-cells table td.sticky-right, .wrapper-sticky.sticky-rtl-cells table th.sticky-right {
     left: 0
 }
-.sticky-table.sticky-rtl-cells table td.sticky-cell, .sticky-table.sticky-rtl-cells table th.sticky-cell,
-.sticky-table.sticky-ltr-cells table td.sticky-cell-opposite, .sticky-table.sticky-ltr-cells table th.sticky-cell-opposite {
+.wrapper-sticky.sticky-rtl-cells table td.sticky-left, .wrapper-sticky.sticky-rtl-cells table th.sticky-left,
+.wrapper-sticky.sticky-ltr-cells table td.sticky-right, .wrapper-sticky.sticky-ltr-cells table th.sticky-right {
     right: 0
 }
 
-.sticky-table table tr.sticky-header td.sticky-cell, .sticky-table table tr.sticky-header th.sticky-cell,
-.sticky-table table tr.sticky-header td.sticky-cell-opposite, .sticky-table table tr.sticky-header th.sticky-cell-opposite,
-.sticky-table table tr.sticky-footer td.sticky-cell, .sticky-table table tr.sticky-footer th.sticky-cell,
-.sticky-table table tr.sticky-footer td.sticky-cell-opposite, .sticky-table table tr.sticky-footer th.sticky-cell-opposite {
+.wrapper-sticky table tr.sticky-top td.sticky-left, .wrapper-sticky table tr.sticky-top th.sticky-left,
+.wrapper-sticky table tr.sticky-top td.sticky-right, .wrapper-sticky table tr.sticky-top th.sticky-right,
+.wrapper-sticky table tr.sticky-bottom td.sticky-left, .wrapper-sticky table tr.sticky-bottom th.sticky-left,
+.wrapper-sticky table tr.sticky-bottom td.sticky-right, .wrapper-sticky table tr.sticky-bottom th.sticky-right {
     z-index: 15;
 }
