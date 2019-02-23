@@ -2,15 +2,6 @@
 
 Sticky Table is a jQuery plugin that gives you the ability to make any table element  on your page always stay visible.
 
-## Sticky Table in brief
-
-This is how it works:
-
-- When the target element is about to be hidden, the plugin will add the class `className` to it (and to a wrapper added as its parent), set it to `position: fixed` and calculate its new `top`, based on the element's height, the page height and the `topSpacing` and `bottomSpacing` options.
-- That's it. 
-In some cases you might need to set a fixed width to your element when it is "sticked".
-But by default (`widthFromWrapper == true`) Sticky Table updates elements's width to the wrapper's width.
-Check the `example-*.html` files for some examples.
 
 ## Usage
 
