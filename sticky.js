@@ -65,57 +65,58 @@
             }
 
             $(CLASS.wrapper).scroll(function () {
-                $(this).find("table tr.sticky-top th").css('top', $(this).scrollTop());
-                $(this).find("table tr.sticky-top td").css('top', $(this).scrollTop());
+                $(this).find("table tr.st-sticky-top th").css('top', $(this).scrollTop());
+                $(this).find("table tr.st-sticky-top td").css('top', $(this).scrollTop());
                 var maxScroll = $(this).find("table").prop("clientHeight") - $(this).prop("clientHeight");
-                $(this).find("table tr.sticky-bottom th").css('bottom', maxScroll - $(this).scrollTop());
-                $(this).find("table tr.sticky-bottom td").css('bottom', maxScroll - $(this).scrollTop());
+                $(this).find("table tr.st-sticky-bottom th").css('bottom', maxScroll - $(this).scrollTop());
+                $(this).find("table tr.st-sticky-bottom td").css('bottom', maxScroll - $(this).scrollTop());
             }).scroll();
 
             $(CLASS.wrapperLTR).scroll(function () {
-                $(this).find("table th.sticky-left").css('left', $(this).scrollLeft());
-                $(this).find("table td.sticky-left").css('left', $(this).scrollLeft());
+                $(this).find("table th.st-sticky-left").css('left', $(this).scrollLeft());
+                $(this).find("table td.st-sticky-left").css('left', $(this).scrollLeft());
                 var maxScroll = $(this).find("table").prop("clientWidth") - $(this).prop("clientWidth");
-                $(this).find("table th.sticky-right").css('right', maxScroll - $(this).scrollLeft());
-                $(this).find("table td.sticky-right").css('right', maxScroll - $(this).scrollLeft());
+                $(this).find("table th.st-sticky-right").css('right', maxScroll - $(this).scrollLeft());
+                $(this).find("table td.st-sticky-right").css('right', maxScroll - $(this).scrollLeft());
             }).scroll();
         }
 
         if ($(CLASS.wrapperRTL).length && !(positionStickySupport && scrollTypeRTL === 'negative')) {
+            
             if (positionStickySupport) {
-                $(".sticky-rtl-cells table th.sticky-left").css('position', "relative");
-                $(".sticky-rtl-cells table td.sticky-left").css('position', "relative");
-                $(".sticky-rtl-cells table th.sticky-right").css('position', "relative");
-                $(".sticky-rtl-cells table td.sticky-right").css('position', "relative");
+                $(".st-sticky-rtl-cells table th.st-sticky-left").css('position', "relative");
+                $(".st-sticky-rtl-cells table td.st-sticky-left").css('position', "relative");
+                $(".st-sticky-rtl-cells table th.st-sticky-right").css('position', "relative");
+                $(".st-sticky-rtl-cells table td.st-sticky-right").css('position', "relative");
 
                 $(CLASS.wrapper).scroll(function () {
-                    $(this).find("table tr.sticky-top .sticky-left").css('top', $(this).scrollTop());
-                    $(this).find("table tr.sticky-top .sticky-right").css('top', $(this).scrollTop());
+                    $(this).find("table tr.st-sticky-top .st-sticky-left").css('top', $(this).scrollTop());
+                    $(this).find("table tr.st-sticky-top .st-sticky-right").css('top', $(this).scrollTop());
                     var maxScroll = $(this).find("table").prop("clientHeight") - $(this).prop("clientHeight");
-                    $(this).find("table tr.sticky-bottom .sticky-left").css('bottom', maxScroll - $(this).scrollTop());
-                    $(this).find("table tr.sticky-bottom .sticky-right").css('bottom', maxScroll - $(this).scrollTop());
+                    $(this).find("table tr.st-sticky-bottom .st-sticky-left").css('bottom', maxScroll - $(this).scrollTop());
+                    $(this).find("table tr.st-sticky-bottom .st-sticky-right").css('bottom', maxScroll - $(this).scrollTop());
                 }).scroll();
             }
             $(CLASS.wrapperRTL).scroll(function () {
                 var maxScroll = $(this).find("table").prop("clientWidth") - $(this).prop("clientWidth");
                 switch (scrollTypeRTL) {
                     case "default": // webKit Browsers
-                        $(this).find("table th.sticky-left").css('right', maxScroll - $(this).scrollLeft());
-                        $(this).find("table td.sticky-left").css('right', maxScroll - $(this).scrollLeft());
-                        $(this).find("table th.sticky-right").css('left', $(this).scrollLeft());
-                        $(this).find("table td.sticky-right").css('left', $(this).scrollLeft());
+                        $(this).find("table th.st-sticky-left").css('right', maxScroll - $(this).scrollLeft());
+                        $(this).find("table td.st-sticky-left").css('right', maxScroll - $(this).scrollLeft());
+                        $(this).find("table th.st-sticky-right").css('left', $(this).scrollLeft());
+                        $(this).find("table td.st-sticky-right").css('left', $(this).scrollLeft());
                         break;
                     case "negative": // Firefox, Opera
-                        $(this).find("table th.sticky-left").css('right', $(this).scrollLeft() * -1);
-                        $(this).find("table td.sticky-left").css('right', $(this).scrollLeft() * -1);
-                        $(this).find("table th.sticky-right").css('left', maxScroll + $(this).scrollLeft());
-                        $(this).find("table td.sticky-right").css('left', maxScroll + $(this).scrollLeft());
+                        $(this).find("table th.st-sticky-left").css('right', $(this).scrollLeft() * -1);
+                        $(this).find("table td.st-sticky-left").css('right', $(this).scrollLeft() * -1);
+                        $(this).find("table th.st-sticky-right").css('left', maxScroll + $(this).scrollLeft());
+                        $(this).find("table td.st-sticky-right").css('left', maxScroll + $(this).scrollLeft());
                         break;
                     case "reverse": // IE, Edge
-                        $(this).find("table th.sticky-left").css('right', $(this).scrollLeft());
-                        $(this).find("table td.sticky-left").css('right', $(this).scrollLeft());
-                        $(this).find("table th.sticky-right").css('left', maxScroll - $(this).scrollLeft());
-                        $(this).find("table td.sticky-right").css('left', maxScroll - $(this).scrollLeft());
+                        $(this).find("table th.st-sticky-left").css('right', $(this).scrollLeft());
+                        $(this).find("table td.st-sticky-left").css('right', $(this).scrollLeft());
+                        $(this).find("table th.st-sticky-right").css('left', maxScroll - $(this).scrollLeft());
+                        $(this).find("table td.st-sticky-right").css('left', maxScroll - $(this).scrollLeft());
                 }
             }).scroll();
         }
@@ -127,19 +128,19 @@
             return false;
         }
 
-        tableSticky.wrap('<div class="' + CLASS.wrapper + ' sticky-ltr-cells"></div>');
+        tableSticky.wrap('<div class="' + CLASS.wrapper + ' st-sticky-ltr-cells"></div>');
 
         if ($.isEmptyObject(params)) {
             for (let position in defaultOptions) {
                 let valueSelector = tableSticky.data('sticky-' + position);
-                $(valueSelector).addClass('sticky-' + position);
+                $(valueSelector).addClass('st-sticky-' + position);
             }
         }
 
         let options = $.extend({}, defaultOptions, params);
         for (let position in defaultOptions) {
             let valueSelector = options[position];
-            $(valueSelector).addClass('sticky-' + position);
+            $(valueSelector).addClass('st-sticky-' + position);
         }
 
         return true;
@@ -153,7 +154,7 @@
         }
 
         for (position in defaultOptions) {
-            $('.sticky-' + position).removeClass('sticky-' + position);
+            $('.st-sticky-' + position).removeClass('st-sticky-' + position);
         }
 
         tableSticky.off("sticky-table-susses");
