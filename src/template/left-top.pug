@@ -1,0 +1,11 @@
+extends layout.pug
+block scripts
+ script.
+  $(document).ready(function(){
+  	$('.table').sticky({
+  	   'top':"tbody tr:first-child",
+  	   'left':"tbody tr td:first-child",
+  	});
+  });
+block content
+ include table.pug

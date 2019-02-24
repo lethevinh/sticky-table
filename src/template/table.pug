@@ -1,0 +1,20 @@
+- var list = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,23];
+table.table.table-striped
+  for i in list
+   if i == 0
+    tr
+     for j in list
+        td Header   
+   if i == list.lenght
+    tr
+     for j in list
+        td Footer
+   else
+    tr
+      for j in list
+       if j == 0
+        td LHeader
+       else if j == list.lenght
+        td RHeader
+       else 
+        td Data

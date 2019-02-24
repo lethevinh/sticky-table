@@ -2,7 +2,14 @@
 
 Sticky Table is a jQuery plugin that gives you the ability to make any table element  on your page always stay visible.
 
+## Demo
 
+ <a target="_blank" href="https://lethevinh.github.io/sticky-table/dist/all.html">Full Sticky</a> , 
+ <a target="_blank" href="https://lethevinh.github.io/sticky-table/dist/left-top.html">Sticky Left Top</a> , 
+ <a target="_blank" href="https://lethevinh.github.io/sticky-table/dist/top-bottom.html">Sticky Top Bottom</a> , 
+ <a target="_blank" href="https://lethevinh.github.io/sticky-table/dist/top-right.html">Sticky Top Right</a> , 
+ <a target="_blank" href="https://lethevinh.github.io/sticky-table/dist/left-right.html">Sticky Left Right</a> 
+ 
 ## Usage
 
 - Include jQuery & Sticky Table.

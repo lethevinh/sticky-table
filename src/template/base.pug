@@ -1,0 +1,13 @@
+extends layout.pug
+block scripts
+ script.
+  $(document).ready(function(){
+  	$('.table').sticky({
+  	   'top':"tbody tr:first-child",
+  	   'left':"tbody tr td:first-child",
+  	   "right":"tbody tr td:last-child",
+  	   "bottom":"tbody tr:last-child"
+  	});
+  });
+block content
+ include table.pug
