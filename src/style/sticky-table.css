@@ -25,10 +25,10 @@
   border-collapse: collapse;
 }
 
-.wrapper-sticky table tr.st-sticky-top th,
-.wrapper-sticky table tr.st-sticky-top td,
-.wrapper-sticky table tr.st-sticky-bottom th,
-.wrapper-sticky table tr.st-sticky-bottom td {
+.wrapper-sticky table tr.skt-sticky-top th,
+.wrapper-sticky table tr.skt-sticky-top td,
+.wrapper-sticky table tr.skt-sticky-bottom th,
+.wrapper-sticky table tr.skt-sticky-bottom td {
   background-color: #fff;
   border-top: 0;
   position: relative;
@@ -41,20 +41,20 @@
   z-index: 5;
 }
 
-.wrapper-sticky table tr.st-sticky-top th,
-.wrapper-sticky table tr.st-sticky-top td {
+.wrapper-sticky table tr.skt-sticky-top th,
+.wrapper-sticky table tr.skt-sticky-top td {
   top: 0;
 }
 
-.wrapper-sticky table tr.st-sticky-bottom th,
-.wrapper-sticky table tr.st-sticky-bottom td {
+.wrapper-sticky table tr.skt-sticky-bottom th,
+.wrapper-sticky table tr.skt-sticky-bottom td {
   bottom: 0;
 }
 
-.wrapper-sticky table td.st-sticky-left,
-.wrapper-sticky table th.st-sticky-left,
-.wrapper-sticky table td.st-sticky-right,
-.wrapper-sticky table th.st-sticky-right {
+.wrapper-sticky table td.skt-sticky-left,
+.wrapper-sticky table th.skt-sticky-left,
+.wrapper-sticky table td.skt-sticky-right,
+.wrapper-sticky table th.skt-sticky-right {
   background-color: #fff;
   outline: 1px solid #ddd;
   position: relative;
@@ -66,32 +66,32 @@
   z-index: 10;
 }
 
-.wrapper-sticky.st-sticky-ltr-cells table td.st-sticky-left,
-.wrapper-sticky.st-sticky-ltr-cells table th.st-sticky-left,
-.wrapper-sticky.st-sticky-rtl-cells table td.st-sticky-right,
-.wrapper-sticky.st-sticky-rtl-cells table th.st-sticky-right {
+.wrapper-sticky.skt-sticky-ltr-cells table td.skt-sticky-left,
+.wrapper-sticky.skt-sticky-ltr-cells table th.skt-sticky-left,
+.wrapper-sticky.skt-sticky-rtl-cells table td.skt-sticky-right,
+.wrapper-sticky.skt-sticky-rtl-cells table th.skt-sticky-right {
   left: 0
 }
 
-.wrapper-sticky.st-sticky-rtl-cells table td.st-sticky-left,
-.wrapper-sticky.st-sticky-rtl-cells table th.st-sticky-left,
-.wrapper-sticky.st-sticky-ltr-cells table td.st-sticky-right,
-.wrapper-sticky.st-sticky-ltr-cells table th.st-sticky-right {
+.wrapper-sticky.skt-sticky-rtl-cells table td.skt-sticky-left,
+.wrapper-sticky.skt-sticky-rtl-cells table th.skt-sticky-left,
+.wrapper-sticky.skt-sticky-ltr-cells table td.skt-sticky-right,
+.wrapper-sticky.skt-sticky-ltr-cells table th.skt-sticky-right {
   right: 0
 }
 
-.wrapper-sticky table tr.st-sticky-top td.st-sticky-left,
-.wrapper-sticky table tr.st-sticky-top th.st-sticky-left,
-.wrapper-sticky table tr.st-sticky-top td.st-sticky-right,
-.wrapper-sticky table tr.st-sticky-top th.st-sticky-right,
-.wrapper-sticky table tr.st-sticky-bottom td.st-sticky-left,
-.wrapper-sticky table tr.st-sticky-bottom th.st-sticky-left,
-.wrapper-sticky table tr.st-sticky-bottom td.st-sticky-right,
-.wrapper-sticky table tr.st-sticky-bottom th.st-sticky-right {
+.wrapper-sticky table tr.skt-sticky-top td.skt-sticky-left,
+.wrapper-sticky table tr.skt-sticky-top th.skt-sticky-left,
+.wrapper-sticky table tr.skt-sticky-top td.skt-sticky-right,
+.wrapper-sticky table tr.skt-sticky-top th.skt-sticky-right,
+.wrapper-sticky table tr.skt-sticky-bottom td.skt-sticky-left,
+.wrapper-sticky table tr.skt-sticky-bottom th.skt-sticky-left,
+.wrapper-sticky table tr.skt-sticky-bottom td.skt-sticky-right,
+.wrapper-sticky table tr.skt-sticky-bottom th.skt-sticky-right {
   z-index: 15;
 }
 
-.st-sticky {
+.skt-sticky {
   position: -webkit-sticky;
   position: -moz-sticky;
   position: -ms-sticky;
