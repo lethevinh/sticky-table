@@ -1,83 +1,79 @@
 .wrapper-sticky {
-  max-width: 100%;
-  max-height: 80vh;
-  overflow: auto;
-  border-top: 1px solid #ddd;
-  border-bottom: 1px solid #ddd;
-  padding: 0 !important;
-  transition: width 2s;
+    max-width: 100%;
+    max-height: 80vh;
+    overflow: auto;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    padding: 0 !important;
+    transition: width 2s;
 }
 
 .wrapper-sticky,
 .wrapper-sticky * {
-  -webkit-transition: all 0s;
-  -moz-transition: all 0s;
-  -o-transition: all 0s;
-  transition: all 0s;
+    -webkit-transition: all 0s;
+    -moz-transition: all 0s;
+    -o-transition: all 0s;
+    transition: all 0s;
 }
 
 .wrapper-sticky table {
-  margin-bottom: 0;
-  width: 100%;
-  max-width: 100%;
-  border-spacing: 0;
-  padding: 0 !important;
-  border-collapse: collapse;
+    margin-bottom: 0;
+    width: 100%;
+    max-width: 100%;
+    border-spacing: 0;
+    padding: 0 !important;
+    border-collapse: collapse;
 }
 
 .wrapper-sticky table tr.skt-sticky-top th,
 .wrapper-sticky table tr.skt-sticky-top td,
 .wrapper-sticky table tr.skt-sticky-bottom th,
 .wrapper-sticky table tr.skt-sticky-bottom td {
-  background-color: #fff;
-  border-top: 0;
-  position: relative;
-  position: -webkit-sticky;
-  position: -moz-sticky;
-  position: -ms-sticky;
-  position: -o-sticky;
-  position: sticky;
-  outline: 1px solid #ddd;
-  z-index: 5;
+    background-color: #fff;
+    border-top: 0;
+    position: relative;
+    position: -webkit-sticky;
+    position: -moz-sticky;
+    position: -ms-sticky;
+    position: -o-sticky;
+    position: sticky;
+    outline: 1px solid #ddd;
+    z-index: 5;
 }
 
 .wrapper-sticky table tr.skt-sticky-top th,
 .wrapper-sticky table tr.skt-sticky-top td {
-  top: 0;
+    top: 0;
 }
 
 .wrapper-sticky table tr.skt-sticky-bottom th,
 .wrapper-sticky table tr.skt-sticky-bottom td {
-  bottom: 0;
+    bottom: 0;
 }
 
 .wrapper-sticky table td.skt-sticky-left,
 .wrapper-sticky table th.skt-sticky-left,
 .wrapper-sticky table td.skt-sticky-right,
 .wrapper-sticky table th.skt-sticky-right {
-  background-color: #fff;
-  outline: 1px solid #ddd;
-  position: relative;
-  position: -webkit-sticky;
-  position: -moz-sticky;
-  position: -ms-sticky;
-  position: -o-sticky;
-  position: sticky;
-  z-index: 10;
+    background-color: #fff;
+    outline: 1px solid #ddd;
+    position: relative;
+    position: -webkit-sticky;
+    position: -moz-sticky;
+    position: -ms-sticky;
+    position: -o-sticky;
+    position: sticky;
+    z-index: 10;
 }
 
-.wrapper-sticky.skt-sticky-ltr-cells table td.skt-sticky-left,
-.wrapper-sticky.skt-sticky-ltr-cells table th.skt-sticky-left,
-.wrapper-sticky.skt-sticky-rtl-cells table td.skt-sticky-right,
-.wrapper-sticky.skt-sticky-rtl-cells table th.skt-sticky-right {
-  left: 0
+.wrapper-sticky table td.skt-sticky-left,
+.wrapper-sticky table th.skt-sticky-left {
+    left: 0
 }
 
-.wrapper-sticky.skt-sticky-rtl-cells table td.skt-sticky-left,
-.wrapper-sticky.skt-sticky-rtl-cells table th.skt-sticky-left,
-.wrapper-sticky.skt-sticky-ltr-cells table td.skt-sticky-right,
-.wrapper-sticky.skt-sticky-ltr-cells table th.skt-sticky-right {
-  right: 0
+.wrapper-sticky table td.skt-sticky-right,
+.wrapper-sticky table th.skt-sticky-right {
+    right: 0
 }
 
 .wrapper-sticky table tr.skt-sticky-top td.skt-sticky-left,
@@ -88,15 +84,15 @@
 .wrapper-sticky table tr.skt-sticky-bottom th.skt-sticky-left,
 .wrapper-sticky table tr.skt-sticky-bottom td.skt-sticky-right,
 .wrapper-sticky table tr.skt-sticky-bottom th.skt-sticky-right {
-  z-index: 15;
+    z-index: 15;
 }
 
 .skt-sticky {
-  position: -webkit-sticky;
-  position: -moz-sticky;
-  position: -ms-sticky;
-  position: -o-sticky;
-  position: sticky;
+    position: -webkit-sticky;
+    position: -moz-sticky;
+    position: -ms-sticky;
+    position: -o-sticky;
+    position: sticky;
 }
 
 /*
