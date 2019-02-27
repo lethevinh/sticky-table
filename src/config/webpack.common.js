@@ -13,7 +13,7 @@ const extractAppStyle = new ExtractTextPlugin({
 
 var options = {
     entry: {
-        "sticky-table": path.join(__dirname, "../script", "sticky-table.js"),
+        "sticky-table": path.join(__dirname, "../", "main.ts"),
     },
     output: {
         path: path.join(__dirname, "../../dist"),
