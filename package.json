@@ -1,6 +1,6 @@
 {
   "name": "sticky-table",
-  "version": "1.0.2",
+  "version": "0.1.2",
   "description": "Sticky Table is a high performance module making native position:sticky cross browser.",
   "main": "dist/sticky-table.js",
   "scripts": {
