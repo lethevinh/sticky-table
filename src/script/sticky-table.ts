@@ -1,10 +1,9 @@
 declare var window: any;
 declare var Math;
-declare var Event;
 
 window.stickies = {};
 
-var $ = jQuery;
+import $ from './jquery';
 
 export var CLASS = {
     "wrapper": "wrapper-sticky",
@@ -134,7 +133,6 @@ export class StickyTable {
 
         // Multi Position Sticky // ???
         // Cross Browser
-        var $this = this;
         if (!this.isPositionStickySupport) {
             if (navigator.userAgent.match(/Trident\/7\./)) {
                 $(CLASS.wrapper).on("mousewheel", function(event: any) {

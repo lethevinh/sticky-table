@@ -4,8 +4,8 @@
   "description": "Sticky Table is a high performance module making native position:sticky cross browser.",
   "main": "dist/sticky-table.js",
   "scripts": {
-    "build": "webpack --inline --progress --mode production",
-    "start": "webpack-dev-server --inline --progress --port 8080 --env.dev --mode development",
+    "build": "webpack --inline --progress --mode production --config src/config/webpack.prod.js",
+    "start": "webpack-dev-server --inline --progress --port 8080 --config src/config/webpack.dev.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -29,11 +29,11 @@
   },
   "homepage": "https://github.com/lethevinh/sticky-table#readme",
   "dependencies": {
-    "jquery": "^3.3.1"
+    "acorn": "^6.1.1"
   },
   "devDependencies": {
     "@types/jquery": "^3.3.29",
-    "@types/node": "^11.9.5",
+    "@types/node": "^11.11.4",
     "babel-core": "^6.1.2",
     "babel-loader": "^6.1.0",
     "babel-plugin-transform-runtime": "^6.1.2",
@@ -42,22 +42,24 @@
     "babel-runtime": "^5.8.0",
     "clean-webpack-plugin": "^1.0.0",
     "copy-webpack-plugin": "^4.6.0",
-    "css-loader": "^2.1.0",
+    "css-loader": "^2.1.1",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "file-loader": "^3.0.1",
     "fs-extra": "^7.0.1",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
     "node-sass": "^4.11.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.1",
     "postcss-loader": "^3.0.0",
-    "pug-html-loader": "^1.1.5",
+    "pug": "^2.0.3",
+    "pug-loader": "^2.4.0",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "ts-loader": "^5.3.3",
-    "typescript": "^3.3.3333",
+    "typescript": "^3.3.4000",
     "uglifyjs-webpack-plugin": "^2.1.2",
-    "webpack": "^4.28.3",
-    "webpack-cli": "^3.1.2",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0",
     "webpack-dev-server": "^3.2.1",
     "webpack-merge": "^4.2.1",
     "write-file-webpack-plugin": "^4.5.0"

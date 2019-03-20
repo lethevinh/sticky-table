@@ -7,8 +7,7 @@ var webpack = require("webpack"),
     WriteFilePlugin = require("write-file-webpack-plugin");
 
 const extractAppStyle = new ExtractTextPlugin({
-    filename: "sticky-table.min.css",
-
+    filename: "css/sticky-table.min.css",
 });
 
 var options = {
@@ -16,7 +15,6 @@ var options = {
         "sticky-table": path.join(__dirname, "../", "main.ts"),
     },
     output: {
-        path: path.join(__dirname, "../../dist"),
         filename: "[name].min.js"
     },
     resolve: {
@@ -35,18 +33,7 @@ var options = {
                 loader: "html-loader",
                 exclude: /node_modules/
             },
-            {
-                test: /\.pug$/,
-                use: [
-                    'html-loader',
-                    {
-                        loader: 'pug-html-loader',
-                        options: {
-                            exports: false
-                        }
-                    }
-                ]
-            },
+            { test: /\.pug$/, loader: 'pug-loader' },
             {
                 test: /\.tsx?$/,
                 use: 'ts-loader',
@@ -56,7 +43,7 @@ var options = {
     },
     plugins: [
         // clean the build folder
-        new CleanWebpackPlugin(["dist"]),
+        new CleanWebpackPlugin(),
         // expose and write the allowed env vars on the compiled bundle
         new webpack.DefinePlugin({
             "process.env.NODE_ENV": JSON.stringify(env.NODE_ENV)
@@ -64,22 +51,22 @@ var options = {
         new HtmlWebpackPlugin({
             template: path.join(__dirname, "../template/", "base.pug"),
             filename: "index.html",
-            chunks: ["base"]
+            chunks: ["sticky-table"]
         }),
         new HtmlWebpackPlugin({
             template: path.join(__dirname, "../template/", "top-bottom.pug"),
             filename: "top-bottom.html",
-            chunks: ["top-bottom"]
+            chunks: ["sticky-table"]
         }),
         new HtmlWebpackPlugin({
             template: path.join(__dirname, "../template/", "left-top.pug"),
             filename: "left-top.html",
-            chunks: ["left-top"]
+            chunks: ["sticky-table"]
         }),
         new HtmlWebpackPlugin({
             template: path.join(__dirname, "../template/", "left-right.pug"),
             filename: "left-right.html",
-            chunks: ["left-right"]
+            chunks: ["sticky-table"]
         }),
         extractAppStyle,
         new WriteFilePlugin()
