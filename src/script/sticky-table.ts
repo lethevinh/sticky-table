@@ -57,13 +57,13 @@ export class StickyTable {
 
         this.tableSticky.trigger(EVENTS.initStart, { stickytable: this });
 
-        var $this = this;
+        let $this = this;
 
         this.wrapperSticky.scroll(function() {
             $this.tableSticky.trigger(EVENTS.scrolling, { stickytable: $this });
         });
 
-        var timeoutId;
+        let timeoutId;
         $(window).resize(function() {
             if (timeoutId) {
                 clearTimeout(timeoutId);
@@ -83,26 +83,26 @@ export class StickyTable {
     registerEventListeners() {
 
         $(this.tableSticky).on(EVENTS.initStart, function(event, data) {
-            var stickyTable = data.stickytable;
+            let stickyTable = data.stickytable;
             stickyTable.initStickyTable();
             stickyTable.handleResponsiveSticky();
             stickyTable.handleScrollSticky();
         });
 
         $(this.tableSticky).on(EVENTS.responsiveStart, function(event, data) {
-            var stickyTable = data.stickytable;
+            let stickyTable = data.stickytable;
             stickyTable.handleResponsiveSticky();
         });
 
         $(this.tableSticky).on(EVENTS.scrolling, function(event, data) {
-            var stickyTable = data.stickytable;
+            let stickyTable = data.stickytable;
             stickyTable.handleScrollSticky();
         });
     };
 
     initStickyTable() {
-        var stickies = this.config.stickies;
-        var $this = this;
+        let stickies = this.config.stickies;
+        let $this = this;
         $.each(stickies, function(position: string, stickySelector) {
             $this.tableSticky.find(stickySelector).addClass('skt-sticky-' + position);
         });
@@ -137,36 +137,31 @@ export class StickyTable {
             if (navigator.userAgent.match(/Trident\/7\./)) {
                 $(CLASS.wrapper).on("mousewheel", function(event: any) {
                     event.preventDefault();
-                    var wd = event.originalEvent.wheelDelta;
-                    var csp = $(this).scrollTop();
+                    let wd = event.originalEvent.wheelDelta;
+                    let csp = $(this).scrollTop();
                     $(this).scrollTop(csp - wd);
                 });
             }
-
-            $(this.tableSticky).on(EVENTS.scrolling, function(event, data) {
-                var stickyTable = data.stickytable;
-                stickyTable.handelNotPositionStickySupport();
-            });
+            this.handelNotPositionStickySupport();
         }
     };
 
     handelNotPositionStickySupport() {
         this.wrapperSticky.find("table tr.skt-sticky-top th").css('top', this.wrapperSticky.scrollTop());
         this.wrapperSticky.find("table tr.skt-sticky-top td").css('top', this.wrapperSticky.scrollTop());
-        var maxScroll = this.wrapperSticky.find("table").prop("clientHeight") - this.wrapperSticky.prop("clientHeight");
+        let maxScroll = this.wrapperSticky.find("table").prop("clientHeight") - this.wrapperSticky.prop("clientHeight");
         this.wrapperSticky.find("table tr.skt-sticky-bottom th").css('bottom', maxScroll - this.wrapperSticky.scrollTop());
         this.wrapperSticky.find("table tr.skt-sticky-bottom td").css('bottom', maxScroll - this.wrapperSticky.scrollTop());
 
         this.wrapperSticky.find("table th.skt-sticky-left").css('left', this.wrapperSticky.scrollLeft());
         this.wrapperSticky.find("table td.skt-sticky-left").css('left', this.wrapperSticky.scrollLeft());
-        var maxScroll = this.wrapperSticky.find("table").prop("clientWidth") - this.wrapperSticky.prop("clientWidth");
+        maxScroll = this.wrapperSticky.find("table").prop("clientWidth") - this.wrapperSticky.prop("clientWidth");
         this.wrapperSticky.find("table th.skt-sticky-right").css('right', maxScroll - this.wrapperSticky.scrollLeft());
         this.wrapperSticky.find("table td.skt-sticky-right").css('right', maxScroll - this.wrapperSticky.scrollLeft());
-
     };
 
     positionStickySupport() {
-        var el = document.createElement('a'),
+        let el = document.createElement('a'),
             mStyle = el.style;
         mStyle.cssText = "position:sticky;position:-webkit-sticky;position:-ms-sticky;";
         return mStyle.position.indexOf('sticky') !== -1;
